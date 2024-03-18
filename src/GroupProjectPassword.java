@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.Random;
 
-public class PasswordGenerator {
+public class GroupProjectPassword {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -39,7 +39,7 @@ public class PasswordGenerator {
         reversedPassword.reverse();
 
         // Print the reversed password
-        System.out.println("Reversed password: " + reversedPassword.toString());
+        System.out.println("Reversed password: " + reversedPassword);
 
         scanner.close();
     }
