@@ -5,6 +5,8 @@ import java.text.DecimalFormat;
 public class Main {
     //Added formatter for two decimal places ($X.XX)
     private static final DecimalFormat df = new DecimalFormat("0.00");
+    private static final String[] FIRST_NAMES = {"John", "Alice", "Michael", "Emma", "David", "Olivia", "James", "Sophia", "Robert", "Isabella"};
+    private static final String[] LAST_NAMES = {"Smith", "Johnson", "Williams", "Brown", "Jones", "Miller", "Davis", "Garcia", "Rodriguez", "Wilson"};
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -78,8 +80,9 @@ public class Main {
         System.out.println("Tax (6%): $" + df.format(tax));
         System.out.println("Tip: $" +df.format(tip));
         System.out.println("Total amount: $" + df.format(total));
-        System.out.println("Your order is confirmed! It'll be ready soon.");
-
+        String NameFirst = FIRST_NAMES[random.nextInt(FIRST_NAMES.length)];
+        String NameLast = LAST_NAMES[random.nextInt(LAST_NAMES.length)];
+        System.out.println("Your deliverers name is: " + NameFirst + " " + NameLast);
 
         scanner.close();
     }
