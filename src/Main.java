@@ -11,7 +11,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         // Password creation
-        System.out.println("Let's create a password.");
+        System.out.println("Welcome to Click N Eat! An online ordering system \nLet's first create a password.");
         System.out.println("Enter your first name: ");
         String firstName = scanner.nextLine();
 
@@ -23,24 +23,38 @@ public class Main {
         int randomNumber = random.nextInt(90) + 10;
         String firstThreeLettersLastName = lastName.substring(0, Math.min(3, lastName.length())).toLowerCase();
         String password = lastLetterFirstName + String.valueOf(randomNumber) + firstThreeLettersLastName;
-        System.out.println("Your password is: " + password);
+        //System.out.println("Your password is: " + password);
 
         // Use concat method to add four **** values
         password = password.concat("****");
 
         // Print the password after using concat
-        System.out.println("Password after using concat: " + password);
+        System.out.println("Your password is:" + password);
 
         // Reverse the password using StringBuilder
-        StringBuilder reversedPassword = new StringBuilder(password);
-        reversedPassword.reverse();
+        //StringBuilder reversedPassword = new StringBuilder(password);
+        //reversedPassword.reverse();
 
         // Print the reversed password
-        System.out.println("Reversed password: " + reversedPassword);
+        //System.out.println("Reversed password: " + reversedPassword);
 
         // Continue with food ordering
-        System.out.println("\nWelcome to our Click N Eat food ordering system!");
-        System.out.println("Please enter your name:");
+        // Continue with food ordering
+        System.out.println("\nWelcome!");
+        System.out.println("Please enter your password:");
+        String userInputPassword = scanner.nextLine();
+
+        // Check if the user input matches the generated password
+        if (userInputPassword.equals(password)) {
+            System.out.println("Password correct. You can proceed with your order.");
+        } else {
+            System.out.println("Incorrect password. Access denied. Please try again.");
+            // You can choose to exit the program or handle the incorrect password scenario as needed.
+            //System.exit(0);
+        }
+
+
+        System.out.println("Please enter full your name:");
         String name = scanner.nextLine();
         System.out.println("Please enter your email (Must contain an '@' symbol):");
         String email = scanner.nextLine();
