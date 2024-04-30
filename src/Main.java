@@ -82,6 +82,7 @@ public class Main {
         System.out.println("Total amount: $" + df.format(total));
         String NameFirst = FIRST_NAMES[random.nextInt(FIRST_NAMES.length)];
         String NameLast = LAST_NAMES[random.nextInt(LAST_NAMES.length)];
+        System.out.println("Thank you for your order! It'll be ready soon.");
         System.out.println("Your deliverers name is: " + NameFirst + " " + NameLast);
 
         scanner.close();
