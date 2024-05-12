@@ -16,7 +16,7 @@ public class FoodOrderSystem {
     public void startOrdering(Scanner scanner) {
         boolean ordering = true;
         while (ordering) {
-            System.out.println("What type of food would you like? \nPizza \nSushi \nBurger \nDessert \nBeverage");
+            System.out.println("What type of food would you like? \n1. Pizza \n2. Sushi \n3. Burger \n4. Dessert \n5. Beverage");
             String foodType = scanner.nextLine().toLowerCase();
             switch (foodType) {
                 case "pizza":
@@ -35,7 +35,7 @@ public class FoodOrderSystem {
                     orderBeverage(scanner);
                     break; // Added break statement
                 default:
-                    System.out.println("Invalid choice. Please select from: \nPizza \nSushi \nBurger \nDessert \nBeverage.");
+                    System.out.println("Invalid choice. Please select from: \n1. Pizza \n2. Sushi \n3. Burger \n4. Dessert \n5. Beverage.");
             }
             System.out.println("Would you like to purchase anything else? (yes/no)");
             String continueOrder = scanner.nextLine().toLowerCase();
@@ -44,28 +44,28 @@ public class FoodOrderSystem {
     }
 
     private void orderPizza(Scanner scanner) {
-        System.out.println("What toppings would you like? \nSausage \nPepperoni \nVeggie");
+        System.out.println("What toppings would you like? \n1. Sausage \n2. Pepperoni \n3. Veggie");
         String pizzaType = scanner.nextLine().toLowerCase();
         total += 10.99;
         orderedItems.add("Pizza: " + pizzaType);
     }
 
     private void orderSushi(Scanner scanner) {
-        System.out.println("What type of sushi would you like? \nCrab \nShrimp \nVeggie");
+        System.out.println("What type of sushi would you like? \n1. Crab \n2. Shrimp \n3. Veggie");
         String sushiType = scanner.nextLine().toLowerCase();
         total += 10.99;
         orderedItems.add("Sushi: " + sushiType);
     }
 
     private void orderBurger(Scanner scanner) {
-        System.out.println("What type of burger would you like? \nCheeseburger \nVeggie Burger");
+        System.out.println("What type of burger would you like? \n1. Cheeseburger \n2. Veggie Burger");
         String burgerType = scanner.nextLine().toLowerCase();
         total += 10.99;
         orderedItems.add("Burger: " + burgerType);
     }
 
     private void orderDesserts(Scanner scanner) {
-        System.out.println("What dessert would you like? \nIce Cream \nBrownie \nCake");
+        System.out.println("What dessert would you like? \n1. Ice Cream \n2. Brownie \n3. Cake");
         String dessertType = scanner.nextLine().toLowerCase();
 
         double dessertPrice = 0.0;
@@ -80,7 +80,7 @@ public class FoodOrderSystem {
                 dessertPrice = 5.99;
                 break;
             default:
-                System.out.println("Invalid dessert choice. Please select from: \nIce Cream \nBrownie \nCake");
+                System.out.println("Invalid dessert choice. Please select from: \n1. Ice Cream \n2. Brownie \n3. Cake");
                 return; // Return without adding to total if invalid choice
         }
 
@@ -89,7 +89,7 @@ public class FoodOrderSystem {
     }
 
     private void orderBeverage(Scanner scanner) {
-        System.out.println("What beverage would you like? \nCoke \nSprite \nLemonade \nWater");
+        System.out.println("What beverage would you like? \n1. Coke \n2. Sprite \n3. Lemonade \n4. Water");
         String beverageType = scanner.nextLine().toLowerCase();
 
         double beveragePrice = 0.0;
@@ -101,7 +101,7 @@ public class FoodOrderSystem {
                 beveragePrice = 1.99;
                 break;
             default:
-                System.out.println("Invalid beverage choice. Please select from: \nCoke \nSprite \nLemonade \nWater");
+                System.out.println("Invalid beverage choice. Please select from: \n1. Coke \n2. Sprite \n3. Lemonade \n4. Water");
                 return; // Return without adding to total if invalid choice
         }
         total += beveragePrice;
