@@ -1,12 +1,15 @@
 import java.util.Scanner;
 import java.util.Random;
 import java.text.DecimalFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Main {
-    //Added formatter for two decimal places ($X.XX)
     private static final DecimalFormat df = new DecimalFormat("0.00");
     private static final String[] FIRST_NAMES = {"John", "Alice", "Michael", "Emma", "David", "Olivia", "James", "Sophia", "Robert", "Isabella"};
     private static final String[] LAST_NAMES = {"Smith", "Johnson", "Williams", "Brown", "Jones", "Miller", "Davis", "Garcia", "Rodriguez", "Wilson"};
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -23,38 +26,20 @@ public class Main {
         int randomNumber = random.nextInt(90) + 10;
         String firstThreeLettersLastName = lastName.substring(0, Math.min(3, lastName.length())).toLowerCase();
         String password = lastLetterFirstName + String.valueOf(randomNumber) + firstThreeLettersLastName;
-        //System.out.println("Your password is: " + password);
-
-        // Use concat method to add four **** values
         password = password.concat("****");
 
-        // Print the password after using concat
         System.out.println("Your password is:" + password);
 
-        // Reverse the password using StringBuilder
-        //StringBuilder reversedPassword = new StringBuilder(password);
-        //reversedPassword.reverse();
-
-        // Print the reversed password
-        //System.out.println("Reversed password: " + reversedPassword);
-
-        // Continue with food ordering
-        // Continue with food ordering
         System.out.println("\nWelcome!");
         System.out.println("Please enter your password:");
         String userInputPassword = scanner.nextLine();
 
-        // Check if the user input matches the generated password
-        if (userInputPassword.equals(password)) {
-            System.out.println("Password correct. You can proceed with your order.");
-        } else {
+        if (!userInputPassword.equals(password)) {
             System.out.println("Incorrect password. Access denied. Please try again.");
-            // You can choose to exit the program or handle the incorrect password scenario as needed.
-            //System.exit(0);
+            return;
         }
 
-
-        System.out.println("Please enter full your name:");
+        System.out.println("Please enter your full name:");
         String name = scanner.nextLine();
         System.out.println("Please enter your email (Must contain an '@' symbol):");
         String email = scanner.nextLine();
@@ -72,13 +57,10 @@ public class Main {
         FoodOrderSystem foodOrderSystem = new FoodOrderSystem(name);
         foodOrderSystem.startOrdering(scanner);
 
-        // Calculate total with tax
         double subtotal = foodOrderSystem.getTotal();
-        double tax = 0.06 * subtotal;
+        final double tax = 0.06 * subtotal;
         double total = subtotal * 1.06;
 
-
-        // Ask for tip
         System.out.println("Would you like to add a tip? (yes/no)");
         String tipChoice = scanner.nextLine();
         double tip = 0.00;
@@ -89,29 +71,23 @@ public class Main {
 
         total += tip;
 
+        List<String> orderedItems = foodOrderSystem.getOrderedItems();
 
-        System.out.println("Thank you, " + name + "! Your subtotal is: $" + df.format(subtotal));
-        System.out.println("Tax (6%): $" + df.format(tax));
-        System.out.println("Tip: $" +df.format(tip));
-        System.out.println("Total amount: $" + df.format(total));
+        Date currentDate = new Date();
         String NameFirst = FIRST_NAMES[random.nextInt(FIRST_NAMES.length)];
         String NameLast = LAST_NAMES[random.nextInt(LAST_NAMES.length)];
-        System.out.println("Thank you for your order! It'll be ready soon.");
-        System.out.println("Your deliverers name is: " + NameFirst + " " + NameLast);
+
+        Receipt receipt = new Receipt(name, subtotal, tax, tip, total, NameFirst + " " + NameLast, currentDate, orderedItems);
+        receipt.printReceipt();
 
         scanner.close();
     }
 
-
     private static boolean isValidPhoneNumber(String phoneNumber) {
         return phoneNumber.matches("\\d{10}");
     }
+
     private static boolean isValidEmail(String email) {
         return email.contains("@");
     }
 }
-
-
-
-
-

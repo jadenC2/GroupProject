@@ -1,12 +1,16 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class FoodOrderSystem {
     private String customerName;
     private double total;
+    private List<String> orderedItems;
 
     public FoodOrderSystem(String customerName) {
         this.customerName = customerName;
         this.total = 0.0;
+        this.orderedItems = new ArrayList<>();
     }
 
     public void startOrdering(Scanner scanner) {
@@ -43,21 +47,21 @@ public class FoodOrderSystem {
         System.out.println("What toppings would you like? \nSausage \nPepperoni \nVeggie");
         String pizzaType = scanner.nextLine().toLowerCase();
         total += 10.99;
-        System.out.println("You ordered a " + pizzaType + " pizza.");
+        orderedItems.add("Pizza: " + pizzaType);
     }
 
     private void orderSushi(Scanner scanner) {
         System.out.println("What type of sushi would you like? \nCrab \nShrimp \nVeggie");
         String sushiType = scanner.nextLine().toLowerCase();
         total += 10.99;
-        System.out.println("You ordered " + sushiType + " sushi.");
+        orderedItems.add("Sushi: " + sushiType);
     }
 
     private void orderBurger(Scanner scanner) {
         System.out.println("What type of burger would you like? \nCheeseburger \nVeggie Burger");
         String burgerType = scanner.nextLine().toLowerCase();
         total += 10.99;
-        System.out.println("You ordered a " + burgerType + ".");
+        orderedItems.add("Burger: " + burgerType);
     }
 
     private void orderDesserts(Scanner scanner) {
@@ -81,7 +85,7 @@ public class FoodOrderSystem {
         }
 
         total += dessertPrice;
-        System.out.println("You ordered " + dessertType + ".");
+        orderedItems.add("Dessert: " + dessertType);
     }
 
     private void orderBeverage(Scanner scanner) {
@@ -91,14 +95,8 @@ public class FoodOrderSystem {
         double beveragePrice = 0.0;
         switch (beverageType) {
             case "coke":
-                beveragePrice = 1.99;
-                break;
             case "sprite":
-                beveragePrice = 1.99;
-                break;
             case "lemonade":
-                beveragePrice = 1.99;
-                break;
             case "water":
                 beveragePrice = 1.99;
                 break;
@@ -107,10 +105,14 @@ public class FoodOrderSystem {
                 return; // Return without adding to total if invalid choice
         }
         total += beveragePrice;
-        System.out.println("You ordered " + beverageType + ".");
+        orderedItems.add("Beverage: " + beverageType);
     }
 
     public double getTotal() {
         return total;
+    }
+
+    public List<String> getOrderedItems() {
+        return orderedItems;
     }
 }
