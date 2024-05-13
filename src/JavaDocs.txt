@@ -28,6 +28,15 @@ Explanation of Usage:
 - The GroupProjectPassword class demonstrates password generation and manipulation techniques.
 - The RandomNameGenerator class shows how to generate random names using predefined arrays of first and last names.
 
+5. Receipt:
+- This class generates a receipt at the end of the Main class that has the following listed:
+    - Subtotal
+    - Tax (at 6%)
+    - Option for providing a tip 
+    - Lists the total of the items purchased
+- There is also an area for Date and Time, that prints in the format of Day, Month, Date, Time, Timezone, Year
+
+
 
 Complete Code:
 import java.util.Scanner;
